@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Page</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="login-box">
+
+            <h1>Welcome Back</h1>
+
+            <p>Please login to continue</p>
+
+            <form id="loginForm">
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email"
+                    >
+
+                    <small id="emailError" class="error"></small>
+
+                </div>
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <div class="password-container">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Password"
+                        >
+
+                        <span id="togglePassword">👁️</span>
+
+                    </div>
+
+                    <small id="passwordError" class="error"></small>
+
+                </div>
+
+                <button type="submit">
+
+                    Login
+
+                </button>
+
+            </form>
+
+            <p class="signup">
+
+                Don't have an account?
+
+                <a href="#">Sign Up</a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

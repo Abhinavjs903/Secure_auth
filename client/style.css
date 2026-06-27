@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#4facfe,#00f2fe);
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.login-box h1{
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+.login-box p{
+    text-align:center;
+    color:#777;
+    margin-bottom:25px;
+}
+form{
+    display:flex;
+    flex-direction:column;
+}
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+    box-sizing:border-box;
+}
+input:focus{
+    border-color:#4facfe;
+    box-shadow:0 0 5px rgba(79,172,254,0.5);
+}
+button{
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#4facfe;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+button:hover{
+    background:#2d8cf0;
+}
+.signup{
+    margin-top:20px;
+    text-align:center;
+}
+.signup a{
+    color:#4facfe;
+    text-decoration:none;
+    font-weight:bold;
+}
+.signup a:hover{
+    text-decoration:underline;
+}
+.error{
+
+    color:red;
+
+    font-size:13px;
+
+    margin-top:-10px;
+
+    margin-bottom:15px;
+
+    display:block;
+
+}
+.password-container{
+    position:relative;
+}
+.password-container span{
+
+    position:absolute;
+
+    right:15px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+    user-select:none;
+
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.password-container{
+    position:relative;
+}
+
+.password-container input{
+    width:100%;
+    padding-right:45px;
+}
+
+#togglePassword{
+    position:absolute;
+    top:50%;
+    right:15px;
+    transform:translateY(-50%);
+    cursor:pointer;
+    font-size:18px;
+    user-select:none;
+}
+.error{
+    color:red;
+    font-size:13px;
+    display:block;
+    min-height:18px;
+    margin-top:5px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+input{
+    margin-bottom:0;
+}
