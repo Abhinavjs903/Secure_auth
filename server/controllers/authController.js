@@ -1,52 +1,50 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+
 const signup = async (req, res) => {
 
     try {
 
         const { name, email, phone, password } = req.body;
-const existingUser = await User.findOne({ email });
 
-if (existingUser) {
+        const existingUser = await User.findOne({ email });
 
-    return res.status(400).json({
+        if (existingUser) {
 
-        success: false,
+            return res.status(400).json({
+                success: false,
+                message: "Email already exists"
+            });
 
-        message: "Email already exists"
+        }
 
-    });
+        const existingPhone = await User.findOne({ phone });
 
-}
-const existingPhone = await User.findOne({ phone });
+        if (existingPhone) {
 
-if (existingPhone) {
+            return res.status(400).json({
+                success: false,
+                message: "Phone number already exists"
+            });
 
-    return res.status(400).json({
+        }
 
-        success: false,
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-        message: "Phone number already exists"
+        const user = new User({
 
-    });
+            name,
+            email,
+            phone,
+            password: hashedPassword
 
-}const hashedPassword = await bcrypt.hash(password, 10);
-
-const user = new User({
-
-    name,
-    email,
-    phone,
-    password: hashedPassword
-
-});
+        });
 
         await user.save();
 
         res.json({
 
             success: true,
-
             message: "User Registered Successfully"
 
         });
@@ -56,7 +54,6 @@ const user = new User({
         res.status(500).json({
 
             success: false,
-
             message: error.message
 
         });
@@ -65,8 +62,20 @@ const user = new User({
 
 };
 
+const login = async (req, res) => {
+
+    res.json({
+
+        success: true,
+        message: "Login Controller Working"
+
+    });
+
+};
+
 module.exports = {
 
-    signup
+    signup,
+    login
 
 };
