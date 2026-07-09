@@ -133,3 +133,14 @@ button:hover{
 input{
     margin-bottom:0;
 }
+#loginMessage{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    min-height:25px;
+
+}

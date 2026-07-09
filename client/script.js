@@ -23,7 +23,7 @@ togglePassword.addEventListener("click", function () {
 
 const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener("submit", function (event) {
+loginForm.addEventListener("submit", async function(event){
 
     // Stop page refresh
     event.preventDefault();
@@ -82,11 +82,44 @@ loginForm.addEventListener("submit", function (event) {
     // Success
     // ==============================
 
-    console.log("Validation Passed!");
+   
 
     console.log("Email:", email);
     console.log("Password:", passwordValue);
 
-    alert("Login Successful!");
+    const response = await fetch("http://localhost:5000/login", {
+
+    method: "POST",
+
+    headers: {
+        "Content-Type": "application/json"
+    },
+
+
+    body: JSON.stringify({
+
+        email: email,
+
+        password: passwordValue
+
+    })
 
 });
+const data = await response.json();
+
+const loginMessage = document.getElementById("loginMessage");
+
+loginMessage.textContent = data.message;
+
+if(data.success){
+
+    loginMessage.style.color = "green";
+
+}else{
+
+    loginMessage.style.color = "red";
+
+}
+
+});
+
