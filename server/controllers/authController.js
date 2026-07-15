@@ -1,11 +1,15 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-
+const generateOTP = require("../utils/otpGenerator");
+const jwt = require("jsonwebtoken");
 const signup = async (req, res) => {
 
     try {
 
         const { name, email, phone, password } = req.body;
+        const otp = generateOTP();
+
+        const otpExpiry = new Date(Date.now() + 5 * 60 * 1000);
 
         const existingUser = await User.findOne({ email });
 
@@ -33,14 +37,20 @@ const signup = async (req, res) => {
 
         const user = new User({
 
-            name,
-            email,
-            phone,
-            password: hashedPassword
+           name,
+           email,
+           phone,
+           password: hashedPassword,
 
-        });
+           otp,
+           otpExpiry,
+
+           isVerified: false
+
+            });;
 
         await user.save();
+        console.log("Generated OTP:", otp);
 
         res.json({
 
@@ -96,13 +106,35 @@ const login = async (req, res) => {
 
         }
 
-        res.json({
+        const token = jwt.sign(
 
-            success: true,
+    {
 
-            message: "Login Successful"
+        id: user._id,
 
-        });
+        email: user.email
+
+    },
+
+    process.env.JWT_SECRET,
+
+    {
+
+        expiresIn: "7d"
+
+    }
+
+);
+
+res.json({
+
+    success: true,
+
+    message: "Login Successful",
+
+    token
+
+});
 
     } catch (error) {
 
