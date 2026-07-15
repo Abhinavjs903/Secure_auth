@@ -64,12 +64,57 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
 
-    res.json({
+    try {
 
-        success: true,
-        message: "Login Controller Working"
+        const { email, password } = req.body;
 
-    });
+        const user = await User.findOne({ email });
+
+        if (!user) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message: "User not found"
+
+            });
+
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+
+        if (!isMatch) {
+
+            return res.status(401).json({
+
+                success: false,
+
+                message: "Incorrect Password"
+
+            });
+
+        }
+
+        res.json({
+
+            success: true,
+
+            message: "Login Successful"
+
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+
+            success: false,
+
+            message: error.message
+
+        });
+
+    }
 
 };
 
