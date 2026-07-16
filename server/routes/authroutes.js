@@ -4,16 +4,15 @@ const router = express.Router();
 
 const {
     signup,
-    login,
-    verifyOTP
+    login
 } = require("../controllers/authController");
 
-// Signup Routes
+// Test Route
 router.get("/signup", (req, res) => {
     res.send("Signup Route Working");
 });
-router.post("/verify-otp", verifyOTP);
 
+// Signup Route
 router.post("/signup", signup);
 
 // Login Route
