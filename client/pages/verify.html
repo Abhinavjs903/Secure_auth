@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verify Email</title>
+
+    <link rel="stylesheet" href="../css/auth.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Verify Email</h1>
+
+    <p>Enter the OTP sent to your email.</p>
+
+    <form id="verifyForm">
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            required
+        >
+
+        <input
+            type="text"
+            id="otp"
+            placeholder="Enter OTP"
+            required
+        >
+
+        <button type="submit">
+
+            Verify OTP
+
+        </button>
+
+    </form>
+
+    <p id="verifyMessage"></p>
+
+</div>
+
+<script src="../js/verify.js"></script>
+
+</body>
+</html>
