@@ -186,73 +186,6 @@ const login = async (req, res) => {
 // VERIFY OTP
 // ==============================
 
-const verifyOTP = async (req, res) => {
-
-    try {
-
-        const { email, otp } = req.body;
-
-        const user = await User.findOne({ email });
-
-        if (!user) {
-
-            return res.status(404).json({
-
-                success: false,
-                message: "User not found"
-
-            });
-
-        }
-
-        if (user.otp !== otp) {
-
-            return res.status(400).json({
-
-                success: false,
-                message: "Invalid OTP"
-
-            });
-
-        }
-
-        if (new Date() > user.otpExpiry) {
-
-            return res.status(400).json({
-
-                success: false,
-                message: "OTP Expired"
-
-            });
-
-        }
-
-        user.isVerified = true;
-        user.otp = null;
-        user.otpExpiry = null;
-
-        await user.save();
-
-        res.json({
-
-            success: true,
-            message: "Email Verified Successfully"
-
-        });
-
-    } catch (error) {
-
-        res.status(500).json({
-
-            success: false,
-            message: error.message
-
-        });
-
-    }
-
-};
-
 // ==============================
 // EXPORTS
 // ==============================
@@ -261,6 +194,5 @@ module.exports = {
 
     signup,
     login,
-    verifyOTP
 
 };
