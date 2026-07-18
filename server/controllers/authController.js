@@ -1,10 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
-const generateOTP = require("../utils/otpGenerator");
-const sendOTPEmail = require("../utils/mail");
-
+const OTP = require("../models/OTP");
 // ==============================
 // SIGNUP
 // ==============================
@@ -14,7 +11,20 @@ const signup = async (req, res) => {
     try {
 
         const { name, email, phone, password } = req.body;
+        const otpRecord = await OTP.findOne({ email });
 
+if (!otpRecord || !otpRecord.verified) {
+
+    return res.status(400).json({
+
+        success: false,
+        message: "Please verify your email first."
+
+    });
+
+}
+        
+        // Check Email
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
@@ -28,6 +38,7 @@ const signup = async (req, res) => {
 
         }
 
+        // Check Phone
         const existingPhone = await User.findOne({ phone });
 
         if (existingPhone) {
@@ -41,44 +52,27 @@ const signup = async (req, res) => {
 
         }
 
-        const otp = generateOTP();
-
-        const otpExpiry = new Date(Date.now() + 5 * 60 * 1000);
-
+        // Hash Password
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        // Create User
         const user = new User({
 
             name,
             email,
             phone,
             password: hashedPassword,
-            otp,
-            otpExpiry,
-            isVerified: false
+            isVerified: true
 
         });
 
         await user.save();
-
-        try {
-
-            await sendOTPEmail(email, otp);
-
-            console.log("✅ OTP Email Sent Successfully");
-
-        } catch (error) {
-
-            console.log("❌ Email Sending Failed");
-            console.error(error);
-
-        }
+        await OTP.deleteOne({ email });
 
         res.json({
 
             success: true,
-            message: "Account created successfully. Please verify your email.",
-            email
+            message: "Account Created Successfully"
 
         });
 
@@ -183,16 +177,12 @@ const login = async (req, res) => {
 };
 
 // ==============================
-// VERIFY OTP
-// ==============================
-
-// ==============================
 // EXPORTS
 // ==============================
 
 module.exports = {
 
     signup,
-    login,
+    login
 
 };

@@ -2,55 +2,22 @@ const token = localStorage.getItem("token");
 
 if (!token) {
 
-    window.location.href = "index.html";
+    window.location.href = "auth.html";
 
 }
 
-async function loadDashboard() {
+const payload = JSON.parse(atob(token.split(".")[1]));
 
-    try {
+document.getElementById("welcomeText").innerHTML = `
 
-        const response = await fetch("http://localhost:5000/api/dashboard", {
+<b>Email:</b> ${payload.email}
 
-            method: "GET",
+`;
 
-            headers: {
-
-                Authorization: token
-
-            }
-
-        });
-
-        const data = await response.json();
-
-        console.log(data);
-
-        if (!data.success) {
-
-            window.location.href = "index.html";
-
-            return;
-
-        }
-
-        document.getElementById("welcome").textContent =
-            "Welcome " + data.user.email;
-
-    } catch (error) {
-
-        console.log(error);
-
-    }
-
-}
-
-loadDashboard();
-
-document.getElementById("logoutBtn").addEventListener("click", () => {
+document.getElementById("logoutButton").addEventListener("click", () => {
 
     localStorage.removeItem("token");
 
-    window.location.href = "index.html";
+    window.location.href = "auth.html";
 
 });
