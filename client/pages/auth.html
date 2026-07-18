@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Authentication</title>
+
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGIN -->
+
+    <div id="loginSection">
+
+        <h1>Login</h1>
+
+        <form id="loginForm">
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Email"
+            >
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Password"
+            >
+
+            <button type="submit">
+
+                Login
+
+            </button>
+
+        </form>
+
+        <p>
+
+            Don't have an account?
+
+            <a href="#" id="showSignup">
+
+                Create Account
+
+            </a>
+
+        </p>
+
+    </div>
+
+    <!-- SIGNUP -->
+
+    <div id="signupSection" style="display:none;">
+
+        <h1>Create Account</h1>
+
+        <form id="signupForm">
+
+            <input
+                type="text"
+                id="signupName"
+                placeholder="Name"
+            >
+
+            <div class="emailRow">
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="Email"
+                >
+
+                <button
+                    type="button"
+                    id="sendOTPButton">
+
+                    Verify
+
+                </button>
+
+            </div>
+
+            <input
+                type="text"
+                id="signupPhone"
+                placeholder="Phone"
+            >
+
+            <input
+                type="password"
+                id="signupPassword"
+                placeholder="Password"
+            >
+
+            <!-- OTP -->
+
+            <div id="otpSection" style="display:none;">
+
+                <h3>Email Verification</h3>
+
+                <input
+                    type="text"
+                    id="signupOTP"
+                    placeholder="Enter OTP"
+                >
+
+                <button
+                    type="button"
+                    id="verifyOTPButton">
+
+                    Verify OTP
+
+                </button>
+
+                <button
+                    type="button"
+                    id="resendOTPButton">
+
+                    Resend OTP
+
+                </button>
+
+            </div>
+
+            <button
+                type="submit"
+                id="createAccountButton"
+                disabled>
+
+                Create Account
+
+            </button>
+
+        </form>
+
+        <p>
+
+            Already have an account?
+
+            <a href="#" id="showLogin">
+
+                Login
+
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+<script src="../js/auth.js"></script>
+<script src="../js/toast.js"></script>
+</body>
+
+</html>
