@@ -1,167 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Authentication</title>
-
-    <link rel="stylesheet" href="../css/auth.css">
-    <link rel="stylesheet" href="../css/toast.css">
+<meta charset="UTF-8">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureAuth</title>
+<link rel="stylesheet" href="../css/auth.css">
+<link rel="stylesheet" href="../css/toast.css">
 </head>
-
 <body>
-
 <div class="container">
-
-    <!-- LOGIN -->
-
-    <div id="loginSection">
-
-        <h1>Login</h1>
-
-        <form id="loginForm">
-
-            <input
-                type="email"
-                id="loginEmail"
-                placeholder="Email"
-            >
-
-            <input
-                type="password"
-                id="loginPassword"
-                placeholder="Password"
-            >
-
-            <button type="submit">
-
-                Login
-
-            </button>
-
-        </form>
-
-        <p>
-
-            Don't have an account?
-
-            <a href="#" id="showSignup">
-
-                Create Account
-
-            </a>
-
-        </p>
-
-    </div>
-
-    <!-- SIGNUP -->
-
-    <div id="signupSection" style="display:none;">
-
-        <h1>Create Account</h1>
-
-        <form id="signupForm">
-
-            <input
-                type="text"
-                id="signupName"
-                placeholder="Name"
-            >
-
-            <div class="emailRow">
-
-                <input
-                    type="email"
-                    id="signupEmail"
-                    placeholder="Email"
-                >
-
-                <button
-                    type="button"
-                    id="sendOTPButton">
-
-                    Verify
-
-                </button>
-
-            </div>
-
-            <input
-                type="text"
-                id="signupPhone"
-                placeholder="Phone"
-            >
-
-            <input
-                type="password"
-                id="signupPassword"
-                placeholder="Password"
-            >
-
-            <!-- OTP -->
-
-            <div id="otpSection" style="display:none;">
-
-                <h3>Email Verification</h3>
-
-                <input
-                    type="text"
-                    id="signupOTP"
-                    placeholder="Enter OTP"
-                >
-
-                <button
-                    type="button"
-                    id="verifyOTPButton">
-
-                    Verify OTP
-
-                </button>
-
-                <button
-                    type="button"
-                    id="resendOTPButton">
-
-                    Resend OTP
-
-                </button>
-
-            </div>
-
-            <button
-                type="submit"
-                id="createAccountButton"
-                disabled>
-
-                Create Account
-
-            </button>
-
-        </form>
-
-        <p>
-
-            Already have an account?
-
-            <a href="#" id="showLogin">
-
-                Login
-
-            </a>
-
-        </p>
-
-    </div>
-
+<div id="loginSection">
+<h1>SecureAuth</h1>
+<p class="subtitle">Secure Login Authentication</p>
+<form id="loginForm">
+<input type="email" id="loginEmail" placeholder="Email Address">
+<div class="passwordBox">
+<input type="password" id="loginPassword" placeholder="Password">
+<span class="togglePassword" data-target="loginPassword">👁</span>
 </div>
+<a href="#" class="forgotLink" id="forgotPasswordLink">Forgot Password?</a>
+<button type="submit">Login</button>
+</form>
+<p>Don't have an account? <a href="#" id="showSignup">Create Account</a></p>
+</div>
+<div id="signupSection" style="display:none;">
+<h1>SecureAuth</h1>
+<p class="subtitle">Create your account</p>
+<form id="signupForm">
+<input type="text" id="signupName" placeholder="Full Name">
+<div class="emailRow">
+<input type="email" id="signupEmail" placeholder="Email Address">
+<button type="button" id="sendOTPButton">Verify</button>
+</div>
+<input type="text" id="signupPhone" placeholder="Phone Number">
+<div class="passwordBox">
+<input type="password" id="signupPassword" placeholder="Password">
+<span class="togglePassword" data-target="loginPassword">
 
-<script src="../js/auth.js"></script>
+<i class="fa-solid fa-eye"></i>
+
+</span>
+</div>
+<div id="otpSection" style="display:none;">
+<h3>Email Verification</h3>
+<input type="text" id="signupOTP" placeholder="Enter OTP">
+<button type="button" id="verifyOTPButton">Verify OTP</button>
+<button type="button" id="resendOTPButton">Resend OTP</button>
+</div>
+<button type="submit" id="createAccountButton" disabled>Create Account</button>
+</form>
+<p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+</div>
+</div>
+<div class="googleWrapper">
+<div class="divider"><span>OR</span></div>
+<button type="button" id="googleLoginButton" class="googleButton">Continue with Google</button>
+</div>
 <script src="../js/toast.js"></script>
+<script src="../js/auth.js"></script>
 </body>
-
 </html>

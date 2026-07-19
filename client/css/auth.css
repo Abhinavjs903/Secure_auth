@@ -1,13 +1,19 @@
+/* ===========================
+   RESET
+=========================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
 }
 
 body{
 
-    height:100vh;
+    background:#f0f2f5;
+
+    min-height:100vh;
 
     display:flex;
 
@@ -15,31 +21,61 @@ body{
 
     align-items:center;
 
-    background:linear-gradient(135deg,#36D1DC,#5B86E5);
+    padding:20px;
 
 }
+
+/* ===========================
+   CARD
+=========================== */
 
 .container{
 
-    width:420px;
+    width:100%;
+    max-width:430px;
 
-    background:white;
+    background:#ffffff;
 
-    padding:40px;
+    padding:35px;
 
-    border-radius:15px;
+    border-radius:18px;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+    animation:fadeUp .4s ease;
 
 }
+
+/* ===========================
+   HEADINGS
+=========================== */
 
 h1{
 
     text-align:center;
 
+    color:#1877f2;
+
     margin-bottom:10px;
 
+    font-size:30px;
+
 }
+
+.subtitle{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-bottom:30px;
+
+    font-size:15px;
+
+}
+/* ===========================
+   FORM
+=========================== */
 
 form{
 
@@ -47,135 +83,246 @@ form{
 
     flex-direction:column;
 
+    gap:15px;
+
 }
 
 input{
 
-    margin:10px 0;
+    width:100%;
 
-    padding:12px;
-
-    border:1px solid #ccc;
-
-    border-radius:8px;
-
-    font-size:16px;
-
-}
-
-button{
-
-    margin-top:15px;
-
-    padding:12px;
-
-    border:none;
-
-    border-radius:8px;
-
-    background:#4F7DF9;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:16px;
-
-}
-
-button:hover{
-
-    background:#3568ef;
-
-}
-
-button:disabled{
-
-    background:gray;
-
-    cursor:not-allowed;
-
-}
-
-.emailRow{
-
-    display:flex;
-
-    gap:10px;
-
-}
-
-.emailRow input{
-
-    flex:1;
-
-}
-
-.emailRow button{
-
-    margin-top:10px;
-
-}
-
-p{
-
-    margin-top:20px;
-
-    text-align:center;
-
-}
-
-a{
-
-    text-decoration:none;
-
-    color:#4F7DF9;
-
-    font-weight:bold;
-
-}
-
-#otpSection{
-
-    margin-top:20px;
-
-    padding:15px;
+    padding:13px 15px;
 
     border:1px solid #ddd;
 
     border-radius:10px;
 
-    background:#f8f8f8;
-
-}
-button{
-
-    transition: all .25s ease;
-
-}
-button:hover{
-
-    transform: translateY(-2px);
-
-    background:#3568ef;
-
-}
-button:active{
-
-    transform: scale(.97);
-
-}
-input{
+    font-size:15px;
 
     transition:.25s;
 
 }
-input:focus{
 
-    border-color:#4F7DF9;
+input:focus{
 
     outline:none;
 
-    box-shadow:0 0 8px rgba(79,125,249,.3);
+    border-color:#1877f2;
+
+    box-shadow:0 0 8px rgba(24,119,242,.2);
+
+}
+/* ===========================
+   BUTTONS
+=========================== */
+
+button{
+
+    width:100%;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#1877f2;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    background:#166fe5;
+
+    transform:translateY(-2px);
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+button:disabled{
+
+    background:#9ca3af;
+
+    cursor:not-allowed;
+
+}
+/* ===========================
+   LINKS
+=========================== */
+
+p{
+
+    text-align:center;
+
+    margin-top:20px;
+
+}
+
+a{
+
+    color:#1877f2;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.passwordBox{
+
+    position:relative;
+
+}
+
+.passwordBox input{
+
+    padding-right:45px;
+
+}
+
+.togglePassword{
+
+    position:absolute;
+
+    right:15px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+    user-select:none;
+
+}
+
+.forgotLink{
+
+    text-align:right;
+
+    font-size:14px;
+
+}
+
+.divider{
+
+    display:flex;
+
+    align-items:center;
+
+    margin:20px 0;
+
+}
+
+.divider::before,
+.divider::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:#ddd;
+
+}
+body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+.divider span{
+
+    padding:0 15px;
+
+    color:#777;
+
+}
+.googleWrapper{
+
+    width:100%;
+
+    max-width:430px;
+
+    margin:25px auto 0;
+
+}
+.googleButton{
+
+    width:100%;
+
+}
+.googleButton{
+
+    background:white;
+
+    color:#333;
+
+    border:1px solid #ddd;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.googleButton:hover{
+
+    background:#f8f8f8;
 
 }
