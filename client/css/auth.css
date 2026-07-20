@@ -303,6 +303,55 @@ body{
     width:100%;
 
 }
+/* ==============================
+   Forgot Password Modal
+============================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+}
+
+.modalContent{
+
+    width:420px;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    animation:fadeUp .3s ease;
+
+}
+
+.modalContent h2{
+
+    text-align:center;
+
+    color:#1877f2;
+
+}
 .googleButton{
 
     background:white;
@@ -326,3 +375,4 @@ body{
     background:#f8f8f8;
 
 }
+
