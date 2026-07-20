@@ -7,12 +7,13 @@ const authRoutes = require("./routes/authRoutes");
 const app = express();
 const cors = require("cors");
 const otpRoutes = require("./routes/otpRoutes");
+const passwordRoutes = require("./routes/passwordRoutes");
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/otp", otpRoutes);
-
+app.use("/api/password", passwordRoutes);
 const PORT = process.env.PORT;
 
 app.get("/", (req, res) => {
