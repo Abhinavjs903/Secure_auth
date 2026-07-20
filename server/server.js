@@ -3,17 +3,17 @@ const connectDB = require("./config/db");
 connectDB();
 const express = require("express");
 const dashboardRoutes = require("./routes/dashboardroutes");
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./routes/authroutes");
 const app = express();
 const cors = require("cors");
-const otpRoutes = require("./routes/otpRoutes");
-const passwordRoutes = require("./routes/passwordRoutes");
+const otpRoutes = require("./routes/otproutes");
+const passwordRoutes = require("./routes/passwordroutes");
 app.use(cors());
 app.use(express.json());
-app.use("/api/auth", authRoutes);
-app.use("/api/dashboard", dashboardRoutes);
-app.use("/api/otp", otpRoutes);
-app.use("/api/password", passwordRoutes);
+app.use("/api/auth", authroutes);
+app.use("/api/dashboard", dashboardroutes);
+app.use("/api/otp", otproutes);
+app.use("/api/password", passwordroutes);
 const PORT = process.env.PORT;
 
 app.get("/", (req, res) => {
