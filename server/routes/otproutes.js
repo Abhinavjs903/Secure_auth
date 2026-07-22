@@ -8,7 +8,7 @@ const {
     verifyOTP,
     resendOTP
 
-} = require("../controllers/otpController");
+} = require("../controllers/otpcontroller");
 
 router.post("/send", sendOTP);
 

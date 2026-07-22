@@ -11,7 +11,7 @@ const {
 
     resetPassword
 
-} = require("../controllers/passwordController");
+} = require("../controllers/passwordcontroller");
 
 router.post("/send-otp", sendResetOTP);
 
