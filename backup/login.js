@@ -87,7 +87,7 @@ loginForm.addEventListener("submit", async function(event){
     console.log("Email:", email);
     console.log("Password:", passwordValue);
 
-    const response = await fetch("http://localhost:5000/api/auth/login", {
+    const response = await fetch(`${API_URL}/api/auth/login`, {
 
     method: "POST",
 
