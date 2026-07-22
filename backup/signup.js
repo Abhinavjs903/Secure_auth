@@ -18,7 +18,7 @@ signupForm.addEventListener("submit", async function(event){
 
     }
 
-    const response = await fetch("http://localhost:5000/api/auth/signup",{
+    const response = await fetch(`${API_URL}/api/auth/signup`,{
 
         method:"POST",
 

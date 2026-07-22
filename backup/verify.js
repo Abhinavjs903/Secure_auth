@@ -8,7 +8,7 @@ verifyForm.addEventListener("submit", async (e) => {
 
     const otp = document.getElementById("otp").value.trim();
 
-    const response = await fetch("http://localhost:5000/api/auth/verify-otp", {
+    const response = await fetch(`${API_URL}/api/password/verify-otp`, {
 
         method: "POST",
 
