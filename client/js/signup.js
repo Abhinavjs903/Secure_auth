@@ -47,7 +47,7 @@ sendOTPButton.addEventListener("click", async () => {
 
         const response=await fetch(
 
-            "http://localhost:5000/api/otp/send",
+            `${API_URL}/api/otp/send`,
 
             {
 
@@ -115,7 +115,7 @@ verifyOTPButton.addEventListener("click",async()=>{
 
     const response=await fetch(
 
-        "http://localhost:5000/api/otp/verify",
+        `${API_URL}/api/otp/verify`,
 
         {
 
@@ -190,7 +190,7 @@ signupForm.addEventListener("submit",async(e)=>{
 
         const response=await fetch(
 
-            "http://localhost:5000/api/auth/signup",
+            `${API_URL}/api/auth/signup`,
 
             {
 

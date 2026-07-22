@@ -103,7 +103,7 @@ sendResetOTPButton.addEventListener("click",async()=>{
 
         const response=await fetch(
 
-            "http://localhost:5000/api/password/send-otp",
+            `${API_URL}/api/password/send-otp`,
 
             {
 
@@ -168,7 +168,7 @@ verifyResetOTPButton.addEventListener("click",async()=>{
 
     const response=await fetch(
 
-        "http://localhost:5000/api/password/verify-otp",
+        `${API_URL}/api/password/verify-otp`,
 
         {
 
@@ -225,7 +225,7 @@ resetPasswordButton.addEventListener("click",async()=>{
 
     const response=await fetch(
 
-        "http://localhost:5000/api/password/reset",
+        `${API_URL}/api/password/reset`,
 
         {
 

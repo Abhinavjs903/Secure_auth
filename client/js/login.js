@@ -36,9 +36,7 @@ loginForm.addEventListener("submit", async (e) => {
 
         loginButton.textContent = "Logging In...";
 
-        const response = await fetch(
-
-            "http://localhost:5000/api/auth/login",
+        const response = await fetch(`${API_URL}/api/auth/login`,
 
             {
 
