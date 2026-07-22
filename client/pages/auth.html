@@ -17,8 +17,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 <form id="loginForm">
 <input type="email" id="loginEmail" placeholder="Email Address">
 <div class="passwordBox">
-<input type="password" id="loginPassword" placeholder="Password">
-<span class="togglePassword" data-target="signupPassword">👁</span>
+    <input
+        type="password"
+        id="loginPassword"
+        placeholder="Password"
+    >
+
+    <span class="togglePassword" data-target="loginPassword">
+        <i class="fa-solid fa-eye"></i>
+    </span>
 </div>
 <a href="#" class="forgotLink" id="forgotPasswordLink">Forgot Password?</a>
 <button type="submit">Login</button>
