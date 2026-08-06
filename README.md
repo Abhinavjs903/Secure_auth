@@ -1,143 +1,230 @@
-# 🔐 Login Authentication System
+# 🔐 SecureAuth
 
-A full-stack authentication system built with **Node.js, Express.js, MongoDB, and Vanilla JavaScript**.
+A production-ready Full Stack Authentication System built using **Node.js, Express.js, MongoDB Atlas, JWT, and Vanilla JavaScript.**
 
-This project is being built step by step to understand how production-ready authentication systems work.
-
----
-
-## 🚀 Features
-
-### ✅ Completed
-
-- User Signup
-- User Login
-- Password Hashing (bcrypt)
-- JWT Authentication
-- Protected Routes
-- Dashboard Authentication
-- Logout
-- MongoDB Atlas Integration
-- MVC Architecture
-- Client-side Validation
-- Show / Hide Password
-- OTP Generation
-- OTP Expiry
-- Professional Folder Structure
-
-### 🚧 Upcoming
-
-- Email OTP Verification
-- Resend OTP
-- Forgot Password
-- Reset Password
-- Google Login
-- User Profile
-- Edit Profile
-- Change Password
-- Deployment (Render + Vercel)
+SecureAuth provides a reusable authentication module for developers building web applications, hackathon projects, or MVPs. Instead of rebuilding authentication from scratch, simply clone, configure, and customize.
 
 ---
 
-## 🛠️ Tech Stack
+# 🌐 Live Demo
 
 ### Frontend
+
+https://secure-auth-git-main-abhinav-dixits-projects-9016b694.vercel.app
+
+### Backend
+
+https://secure-auth-357h.onrender.com
+
+---
+
+# ✨ Features
+
+## Authentication
+
+- ✅ User Signup
+- ✅ Secure Login
+- ✅ JWT Authentication
+- ✅ Logout
+- ✅ Protected Dashboard
+
+## Email Verification
+
+- ✅ Email OTP Verification
+- ✅ OTP Expiry
+- ✅ Resend OTP
+
+## Password Recovery
+
+- ✅ Forgot Password
+- ✅ OTP Verification
+- ✅ Reset Password
+
+## Security
+
+- ✅ bcrypt Password Hashing
+- ✅ JWT Token Authentication
+- ✅ Protected Routes
+- ✅ MongoDB Atlas Integration
+
+## User Experience
+
+- ✅ Password Visibility Toggle
+- ✅ Toast Notifications
+- ✅ Responsive Design
+- ✅ Dashboard
+- ✅ Client-side Validation
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
 
 - HTML5
 - CSS3
 - Vanilla JavaScript
 
-### Backend
+## Backend
 
 - Node.js
 - Express.js
 
-### Database
+## Database
 
 - MongoDB Atlas
 - Mongoose
 
-### Authentication
+## Authentication
 
+- JWT
 - bcrypt
-- JSON Web Token (JWT)
 
-### Email
+## Email Service
 
-- Nodemailer (Gmail)
+- Nodemailer
+
+## Deployment
+
+- Vercel
+- Render
 
 ---
 
-## 📂 Project Structure
-Login-System/
+# 📂 Project Structure
+
+```text
+SecureAuth/
+
 │
+
 ├── client/
-│ ├── assets/
-│ ├── css/
-│ ├── js/
-│ └── pages/
+│   ├── assets/
+│   ├── css/
+│   ├── js/
+│   └── pages/
 │
 ├── server/
-│ ├── config/
-│ ├── controllers/
-│ ├── middleware/
-│ ├── models/
-│ ├── routes/
-│ ├── utils/
-│ ├── .env
-│ ├── package.json
-│ └── server.js
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   ├── .env.example
+│   ├── package.json
+│   └── server.js
 │
+├── screenshots/
+│
+├── LICENSE
 ├── README.md
 └── .gitignore
+```
 
 ---
 
-## ⚙️ Installation
+# 🚀 Installation
 
-### Clone Repository
+Clone the repository
 
 ```bash
-git clone https://github.com/Abhinavjs903/Login-Page
+git clone https://github.com/Abhinavjs903/Secure_auth.git
+```
 
-Install Backend Dependencies
+Go to the server
+
+```bash
 cd server
+```
+
+Install dependencies
+
+```bash
 npm install
-Configure Environment Variables
+```
 
-Create a .env file inside the server folder.
+Create a `.env` file using `.env.example`.
 
-PORT=5000
-MONGO_URI=YOUR_MONGODB_URI
-JWT_SECRET=YOUR_SECRET_KEY
-EMAIL_USER=YOUR_GMAIL
-EMAIL_PASS=YOUR_APP_PASSWORD
-Start Backend
+Start the server
+
+```bash
 npm run dev
-Start Frontend
+```
 
-Open
+Open the frontend using Live Server or deploy it to Vercel.
 
-client/pages/index.html
+---
 
-using Live Server.
+# 🔑 Environment Variables
 
-📚 Learning Objectives
+```env
+PORT=
+
+MONGO_URI=
+
+JWT_SECRET=
+
+EMAIL_USER=
+
+EMAIL_PASS=
+```
+
+---
+
+# 📸 Screenshots
+
+## Login
+
+(Add Screenshot)
+
+## Signup
+
+(Add Screenshot)
+
+## Forgot Password
+
+(Add Screenshot)
+
+## Dashboard
+
+(Add Screenshot)
+
+---
+
+# 🎯 Learning Objectives
 
 This project demonstrates:
 
-MVC Architecture
-REST APIs
-MongoDB Integration
-Authentication Flow
-JWT
-Password Security
-Email Verification
-Protected Routes
-Production Folder Structure
-👨‍💻 Author
-
-Built as a learning project by Abhinav Dixit.
-
+- REST APIs
+- MVC Architecture
+- JWT Authentication
+- Password Hashing
+- Email OTP Verification
+- MongoDB Integration
+- Secure Authentication Flow
+- Production Deployment
+- Modular JavaScript
+- Full Stack Development
 
 ---
+
+# 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+Feel free to fork the repository and improve SecureAuth.
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+# 👨‍💻 Author
+
+**Abhinav Dixit**
+
+If this project helped you, consider giving it a ⭐ on GitHub.
