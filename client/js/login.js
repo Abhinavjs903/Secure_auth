@@ -61,6 +61,8 @@ loginForm.addEventListener("submit", async (e) => {
         );
 
         const data = await response.json();
+        console.log("Status:", response.status);
+console.log("Response:", data);
 
         showToast(
 
