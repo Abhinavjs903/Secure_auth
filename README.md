@@ -6,6 +6,7 @@ SecureAuth provides a reusable authentication module for developers building web
 
 ---
 
+
 # 🌐 Live Demo
 
 ### Frontend
@@ -176,15 +177,15 @@ EMAIL_PASS=
 
 ## Login
 
-(Add Screenshot)
+![Login](screenshots/Screenshot 2026-08-06 111405.jpg)
 
 ## Signup
 
-(Add Screenshot)
+![Signup](screenshots/Screenshot 2026-08-06 111435.jpg)
 
 ## Forgot Password
 
-(Add Screenshot)
+![Forgot Password](screenshots/Screenshot 2026-08-06 111446.jpg)
 
 ## Dashboard
 
