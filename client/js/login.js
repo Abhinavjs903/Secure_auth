@@ -84,7 +84,7 @@ console.log("Response:", data);
 
             setTimeout(() => {
 
-                window.location.href = "pages/dashboard.html";
+                window.location.href = "/dashboard.html";
 
             }, 800);
 
