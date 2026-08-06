@@ -1,28 +1,21 @@
-# Node Modules
+# Dependencies
 node_modules/
 
 # Environment Variables
 .env
+server/.env
 
 # Logs
-logs/
 *.log
 npm-debug.log*
-
-# Operating System Files
-.DS_Store
-Thumbs.db
 
 # VS Code
 .vscode/
 
-# Build Files
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Build
 dist/
 build/
-
-# Coverage
-coverage/
-
-# Temporary Files
-*.tmp
-*.temp
