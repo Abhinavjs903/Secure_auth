@@ -2,6 +2,43 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const OTP = require("../models/OTP");
+
+
+// ==============================
+// PASSWORD STRENGTH VALIDATION
+// ==============================
+
+function isStrongPassword(password) {
+
+    if (typeof password !== "string") {
+
+        return false;
+
+    }
+
+    const minLength = password.length >= 8;
+
+    const hasUppercase = /[A-Z]/.test(password);
+
+    const hasLowercase = /[a-z]/.test(password);
+
+    const hasNumber = /[0-9]/.test(password);
+
+    const hasSpecialChar = /[^A-Za-z0-9\s]/.test(password);
+
+    return (
+
+        minLength &&
+        hasUppercase &&
+        hasLowercase &&
+        hasNumber &&
+        hasSpecialChar
+
+    );
+
+};
+
+
 // ==============================
 // SIGNUP
 // ==============================
@@ -11,20 +48,49 @@ const signup = async (req, res) => {
     try {
 
         const { name, email, phone, password } = req.body;
+
+
+        // ==============================
+        // CHECK PASSWORD STRENGTH
+        // ==============================
+
+        if (!isStrongPassword(password)) {
+
+            return res.status(400).json({
+
+                success: false,
+
+                message:
+                    "Password must be 8+ characters with uppercase, lowercase, number and special character"
+
+            });
+
+        }
+
+
+        // ==============================
+        // VERIFY EMAIL OTP
+        // ==============================
+
         const otpRecord = await OTP.findOne({ email });
 
-if (!otpRecord || !otpRecord.verified) {
+        if (!otpRecord || !otpRecord.verified) {
 
-    return res.status(400).json({
+            return res.status(400).json({
 
-        success: false,
-        message: "Please verify your email first."
+                success: false,
 
-    });
+                message: "Please verify your email first."
 
-}
-        
-        // Check Email
+            });
+
+        }
+
+
+        // ==============================
+        // CHECK EMAIL
+        // ==============================
+
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
@@ -32,13 +98,18 @@ if (!otpRecord || !otpRecord.verified) {
             return res.status(400).json({
 
                 success: false,
+
                 message: "Email already exists"
 
             });
 
         }
 
-        // Check Phone
+
+        // ==============================
+        // CHECK PHONE
+        // ==============================
+
         const existingPhone = await User.findOne({ phone });
 
         if (existingPhone) {
@@ -46,16 +117,25 @@ if (!otpRecord || !otpRecord.verified) {
             return res.status(400).json({
 
                 success: false,
+
                 message: "Phone number already exists"
 
             });
 
         }
 
-        // Hash Password
+
+        // ==============================
+        // HASH PASSWORD
+        // ==============================
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create User
+
+        // ==============================
+        // CREATE USER
+        // ==============================
+
         const user = new User({
 
             name,
@@ -66,12 +146,16 @@ if (!otpRecord || !otpRecord.verified) {
 
         });
 
+
         await user.save();
+
         await OTP.deleteOne({ email });
+
 
         res.json({
 
             success: true,
+
             message: "Account Created Successfully"
 
         });
@@ -81,6 +165,7 @@ if (!otpRecord || !otpRecord.verified) {
         res.status(500).json({
 
             success: false,
+
             message: error.message
 
         });
@@ -88,6 +173,7 @@ if (!otpRecord || !otpRecord.verified) {
     }
 
 };
+
 
 // ==============================
 // LOGIN
@@ -106,35 +192,45 @@ const login = async (req, res) => {
             return res.status(404).json({
 
                 success: false,
+
                 message: "User not found"
 
             });
 
         }
 
+
         if (!user.isVerified) {
 
             return res.status(401).json({
 
                 success: false,
+
                 message: "Please verify your email first."
 
             });
 
         }
 
-        const isMatch = await bcrypt.compare(password, user.password);
+
+        const isMatch = await bcrypt.compare(
+            password,
+            user.password
+        );
+
 
         if (!isMatch) {
 
             return res.status(401).json({
 
                 success: false,
+
                 message: "Incorrect Password"
 
             });
 
         }
+
 
         const token = jwt.sign(
 
@@ -155,10 +251,13 @@ const login = async (req, res) => {
 
         );
 
+
         res.json({
 
             success: true,
+
             message: "Login Successful",
+
             token
 
         });
@@ -168,6 +267,7 @@ const login = async (req, res) => {
         res.status(500).json({
 
             success: false,
+
             message: error.message
 
         });
@@ -175,6 +275,7 @@ const login = async (req, res) => {
     }
 
 };
+
 
 // ==============================
 // EXPORTS
