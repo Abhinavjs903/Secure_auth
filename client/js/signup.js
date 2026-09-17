@@ -107,6 +107,7 @@ sendOTPButton.addEventListener("click", async () => {
 
 });
 
+
 // ==============================
 // VERIFY OTP
 // ==============================
@@ -157,6 +158,39 @@ verifyOTPButton.addEventListener("click",async()=>{
 
 
 // ==============================
+// PASSWORD STRENGTH VALIDATION
+// ==============================
+
+function isStrongPassword(password){
+
+    const minLength = password.length >= 8;
+
+    const hasUppercase = /[A-Z]/.test(password);
+
+    const hasLowercase = /[a-z]/.test(password);
+
+    const hasNumber = /[0-9]/.test(password);
+
+    const hasSpecialChar = /[^A-Za-z0-9\s]/.test(password);
+
+    return (
+
+        minLength &&
+
+        hasUppercase &&
+
+        hasLowercase &&
+
+        hasNumber &&
+
+        hasSpecialChar
+
+    );
+
+}
+
+
+// ==============================
 // CREATE ACCOUNT
 // ==============================
 
@@ -181,6 +215,23 @@ signupForm.addEventListener("submit",async(e)=>{
         return;
 
     }
+
+
+    // ==============================
+    // CHECK PASSWORD STRENGTH
+    // ==============================
+
+    if(!isStrongPassword(signupPassword.value)){
+
+        showToast(
+            "Password must be 8+ characters with uppercase, lowercase, number and special character",
+            "error"
+        );
+
+        return;
+
+    }
+
 
     createAccountButton.disabled=true;
 
