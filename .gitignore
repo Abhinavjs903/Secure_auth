@@ -2,8 +2,10 @@
 node_modules/
 
 # Environment Variables
-.env
 server/.env
+.env
+.env.*
+!.env.example
 
 # Logs
 *.log
