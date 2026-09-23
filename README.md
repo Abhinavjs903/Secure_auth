@@ -145,7 +145,15 @@ Install dependencies
 npm install
 ```
 
-Create a `.env` file using `.env.example`.
+Create a `.env` file using `.env.example`:
+
+​```
+cp .env.example .env
+​```
+
+Then fill in your own values for `MONGO_URI`, `JWT_SECRET`, `EMAIL_USER`, and `EMAIL_PASS`.
+
+
 
 Start the server
 
