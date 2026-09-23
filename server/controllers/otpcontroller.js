@@ -147,6 +147,51 @@ const resendOTP = async (req, res) => {
 
     try {
 
+        const { email } = req.body;
+
+        // Check if user already exists
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser) {
+
+            return res.status(400).json({
+
+                success: false,
+                message: "Email already registered"
+
+            });
+
+        }
+
+        // Generate new OTP
+        const otp = generateOTP();
+
+        // OTP expires in 5 minutes
+        const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
+
+        // Remove previous OTP
+        await OTP.deleteMany({ email });
+
+        // Save new OTP
+        await OTP.create({
+
+            email,
+            otp,
+            expiresAt,
+            verified: false
+
+        });
+
+        // Send new OTP
+        await sendOTPEmail(email, otp);
+
+        res.json({
+
+            success: true,
+            message: "OTP resent successfully"
+
+        });
+
     } catch (error) {
 
         res.status(500).json({
