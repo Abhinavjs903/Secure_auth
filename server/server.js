@@ -22,27 +22,7 @@ app.get("/", (req, res) => {
 
 });
 
-app.post("/login", (req, res) => {
 
-    const { email, password } = req.body;
-
-    if (email === "admin@mcd.gov.in" && password === "34567890-") {
-
-        res.json({
-            success: true,
-            message: "Login Successful!"
-        });
-
-    } else {
-
-        res.json({
-            success: false,
-            message: "Invalid Email or Password"
-        });
-
-    }
-
-});
 
 app.listen(PORT, () => {
 

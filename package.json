@@ -1,5 +1,36 @@
 {
+  
+  
+  "name": "secureauth-server",
+  "version": "1.0.0",
+  "description": "Backend authentication API for SecureAuth",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "check": "find . -type f -name \"*.js\" -not -path \"./node_modules/*\" -print0 | xargs -0 -n1 node --check"
+  },
+  "keywords": [
+    "authentication",
+    "jwt",
+    "express",
+    "mongodb",
+    "otp"
+  ],
+  "author": "Abhinav Dixit",
+  "license": "MIT",
+  "type": "commonjs",
   "dependencies": {
-    "nodemailer": "^9.0.3"
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.4.0",
+    "mongoose": "^9.7.3",
+    "nodemailer": "^9.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
