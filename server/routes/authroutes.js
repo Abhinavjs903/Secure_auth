@@ -4,8 +4,11 @@ const router = express.Router();
 
 const {
     signup,
-    login
+    login,
+    getLoginHistory
 } = require("../controllers/authController");
+
+const authMiddleware = require("../middleware/authMiddleware");
 
 // Test Route
 router.get("/signup", (req, res) => {
@@ -17,5 +20,7 @@ router.post("/signup", signup);
 
 // Login Route
 router.post("/login", login);
+// Login Activity Route
+router.get("/login-history", authMiddleware, getLoginHistory);
 
 module.exports = router;
