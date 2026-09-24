@@ -113,47 +113,84 @@ sendOTPButton.addEventListener("click", async () => {
 
 verifyOTPButton.addEventListener("click",async()=>{
 
-    const response=await fetch(
+    const otp = signupOTP.value.trim();
 
-        `${API_URL}/api/otp/verify`,
+    if(otp===""){
 
-        {
+        showToast("Enter OTP","error");
 
-            method:"POST",
+        return;
 
-            headers:{
+    }
 
-                "Content-Type":"application/json"
+    verifyOTPButton.disabled=true;
 
-            },
+    verifyOTPButton.textContent="Verifying...";
 
-            body:JSON.stringify({
+    try{
 
-                email:signupEmail.value.trim(),
+        const response=await fetch(
 
-                otp:signupOTP.value.trim()
+            `${API_URL}/api/otp/verify`,
 
-            })
+            {
+
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":"application/json"
+
+                },
+
+                body:JSON.stringify({
+
+                    email:signupEmail.value.trim(),
+
+                    otp
+
+                })
+
+            }
+
+        );
+
+        const data=await response.json();
+
+        showToast(data.message,data.success?"success":"error");
+
+        if(data.success){
+
+            signupOTP.disabled=true;
+
+            createAccountButton.disabled=false;
+
+        }
+        else{
+
+            verifyOTPButton.disabled=false;
+
+            verifyOTPButton.textContent="Verify OTP";
 
         }
 
-    );
+    }
 
-    const data=await response.json();
+    catch(error){
 
-    showToast(data.message,data.success?"success":"error");
+        console.log(error);
 
-    if(data.success){
+        showToast("Server Error","error");
 
-        verifyOTPButton.disabled=true;
+        verifyOTPButton.disabled=false;
 
-        signupOTP.disabled=true;
-
-        createAccountButton.disabled=false;
+        verifyOTPButton.textContent="Verify OTP";
 
     }
 
 });
+
+
 
 
 // ==============================
