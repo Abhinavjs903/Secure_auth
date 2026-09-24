@@ -89,10 +89,12 @@ console.log("Response:", data);
             }, 800);
 
         }
+        else{
 
         loginButton.disabled = false;
 
         loginButton.textContent = "Login";
+        }
 
     }
 
