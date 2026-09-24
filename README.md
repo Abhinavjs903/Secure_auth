@@ -11,7 +11,7 @@ SecureAuth provides a reusable authentication module for developers building web
 
 ### Frontend
 
-https://secure-auth-git-main-abhinav-dixits-projects-9016b694.vercel.app
+https://secure-auth-ashen.vercel.app/
 
 ### Backend
 
