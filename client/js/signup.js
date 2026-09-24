@@ -16,6 +16,8 @@ const sendOTPButton = document.getElementById("sendOTPButton");
 
 const verifyOTPButton = document.getElementById("verifyOTPButton");
 
+const resendOTPButton = document.getElementById("resendOTPButton");
+
 const signupOTP = document.getElementById("signupOTP");
 
 const otpSection = document.getElementById("otpSection");
@@ -155,6 +157,72 @@ verifyOTPButton.addEventListener("click",async()=>{
 
 });
 
+// ==============================
+// RESEND OTP
+// ==============================
+
+resendOTPButton.addEventListener("click", async () => {
+
+    const email = signupEmail.value.trim();
+
+    if (email === "") {
+
+        showToast("Enter Email", "error");
+
+        return;
+
+    }
+
+    resendOTPButton.disabled = true;
+    resendOTPButton.textContent = "Sending...";
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/api/otp/resend`,
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        showToast(
+            data.message,
+            data.success ? "success" : "error"
+        );
+
+        if (data.success) {
+
+            resendOTPButton.textContent = "✓ Sent";
+
+        } else {
+
+            resendOTPButton.disabled = false;
+            resendOTPButton.textContent = "Resend OTP";
+
+        }
+
+    } catch (error) {
+
+        console.log(error);
+
+        showToast("Server Error", "error");
+
+        resendOTPButton.disabled = false;
+        resendOTPButton.textContent = "Resend OTP";
+
+    }
+
+});
 
 // ==============================
 // CREATE ACCOUNT
