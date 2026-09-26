@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const LoginActivity = require("../models/LoginActivity");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const OTP = require("../models/OTP");
@@ -127,14 +128,24 @@ const login = async (req, res) => {
 
         if (!isMatch) {
 
-            return res.status(401).json({
-
-                success: false,
-                message: "Incorrect Password"
-
+            await LoginActivity.create({
+                userId: user._id,
+                ipAddress: req.ip,
+                userAgent: req.get("user-agent"),
+                status: "failed"
             });
 
+            return res.status(401).json({
+                success: false,
+                message: "Incorrect Password"
+            });
         }
+        await LoginActivity.create({
+            userId: user._id,
+            ipAddress: req.ip,
+            userAgent: req.get("user-agent"),
+            status: "success"
+        });
 
         const token = jwt.sign(
 
@@ -179,10 +190,27 @@ const login = async (req, res) => {
 // ==============================
 // EXPORTS
 // ==============================
+const getLoginHistory = async (req, res) => {
+    try {
+        const history = await LoginActivity.find({
+            userId: req.user.id
+        })
+            .sort({ createdAt: -1 })
+            .limit(10);
 
+        res.json({
+            success: true,
+            history
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
 module.exports = {
-
     signup,
-    login
-
+    login,
+    getLoginHistory
 };
